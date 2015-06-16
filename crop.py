@@ -1,4 +1,5 @@
 from PIL import Image, ImageChops
+import sys
 
 def trim(im):
     bg = Image.new(im.mode, im.size, im.getpixel((0,0)))
@@ -8,6 +9,7 @@ def trim(im):
     if bbox:
         return im.crop(bbox)
 
-im = Image.open("10034219_HTC-Desire-610-navbl_1.jpg")
+im = Image.open(sys.argv[1])
 im = trim(im)
-im.show()
+#im.show()
+im.save('crop.bmp')
